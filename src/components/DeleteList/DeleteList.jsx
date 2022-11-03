@@ -4,13 +4,19 @@ import { MainDiv } from './Style';
 
 function DeleteList() {
   const { setLog, setList, list, log } = useContext(TodoContext);
+  const current = new Date();
+
+  const date = `
+  ${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()} 
+  Hora: ${current.getHours()}:${current.getMinutes()}
+  `;
 
   const removeList = (id, itemSelected) => {
     // identifica a posição do item dentro do array,
     // e retorna um novo array.
     const removeItem = list.filter((_, index) => index !== id);
     // add no log o item removido
-    setLog([...log, `Deletado item ${itemSelected}`]);
+    setLog([...log, `Data: ${date} - Deletado item ${itemSelected}`]);
     // recupera lista atual, e atualiza a list
     setList(removeItem);
   };

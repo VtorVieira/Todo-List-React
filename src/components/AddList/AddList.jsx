@@ -4,11 +4,17 @@ import { MainDiv } from './Style';
 
 function AddList() {
   const { setLog, setList, setSearch, list, search, log } = useContext(TodoContext);
+  const current = new Date();
 
   const handleChange = ({ target }) => {
     // add conteudo digitado para o state de pesquisa
     setSearch(target.value);
   };
+
+  const date = `
+    ${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()} 
+    Hora: ${current.getHours()}:${current.getMinutes()}
+    `;
 
   const addList = () => {
     // só add na lista, caso o campo do input for maior que zero
@@ -16,11 +22,12 @@ function AddList() {
       // recupera lista atual, e add o novo item
       setList([...list, search]);
       // add no log o item adicionado
-      setLog([...log, `Adicionado item ${search}`]);
+      setLog([...log, `Data: ${date} - Adicionado item ${search}`]);
     }
     // limpa o input
     setSearch("");
   };
+
 
   return (
     <MainDiv>
