@@ -6,8 +6,15 @@ export const MainDiv = styled.div`
   justify-content: center;
   font-family: Helvetica;
   margin-top: 4em;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
   #search {
     width: 35%;
+      @media (max-width: 768px) {
+      width: 88%
+    }
     .input {
       font-size: 16px;
       width: 97%;
@@ -17,6 +24,10 @@ export const MainDiv = styled.div`
   }
   #button {
     width: 10%;
+    @media (max-width: 768px) {
+      margin-top: 2px;
+      width: 100%
+    }
     .btn {
       width: 90%;
       font-size: 16px;

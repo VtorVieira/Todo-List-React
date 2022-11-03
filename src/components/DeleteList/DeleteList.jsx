@@ -20,11 +20,11 @@ function DeleteList() {
       <ol>
         {list && list.map((itens, index) => (
           <div key={index} id='Mainlist'>
-            <div className="currentList">
-              <li>{itens}</li>
+            <div id="currentList">
+              <li className="list">{itens}</li>
             </div>
-            <div>
-              <button className="button" type="button" onClick={() => removeList(index, itens)} >Deletar</button>
+            <div id="buttonDelete">
+              <button className="btn" type="button" onClick={() => removeList(index, itens)} >Deletar</button>
             </div>
           </div>
         ))}

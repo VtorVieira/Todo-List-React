@@ -10,6 +10,9 @@ export const Main = styled.main`
   border-radius: 6px;
   border-style: double;
   border-color: #004289;
+  @media (max-width: 768px) {
+    width: 93%
+  }
 `;
 
 
