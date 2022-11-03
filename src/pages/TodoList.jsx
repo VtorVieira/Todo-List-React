@@ -6,21 +6,29 @@ function TodoList() {
   const [log, setLog] = useState([]);
 
   const handleChange = ({ target }) => {
-    console.log(target.value);
-    setSearch([target.value]);
+    // add conteudo digitado para o state de pesquisa
+    setSearch(target.value);
   };
 
   const addList = () => {
+    // só add na lista, caso o campo do input for maior que zero
     if (search) {
+      // recupera lista atual, e add o novo item
       setList([...list, search]);
-      setLog([...log, `Add ${search}`]);
+      // add no log o item adicionado
+      setLog([...log, `Adicionado item ${search}`]);
     }
+    // limpa o input
     setSearch("");
   };
 
-  const removeList = (remove) => {
-    const removeItem = list.filter((currentList, index) => currentList !== remove);
-    setLog([...log, `Remove ${remove}`]);
+  const removeList = (id, itemSelected) => {
+    // identifica a posição do item dentro do array,
+    // e retorna um novo array.
+    const removeItem = list.filter((_, index) => index !== id);
+    // add no log o item removido
+    setLog([...log, `Deletado item ${itemSelected}`]);
+    // recupera lista atual, e atualiza a list
     setList(removeItem);
   };
 
@@ -37,13 +45,13 @@ function TodoList() {
         {list && list.map((itens, index) => (
           <div key={index}>
             <li>{itens}</li>
-            <button type="button" onClick={() => removeList(itens)} >remove</button>
+            <button type="button" onClick={() => removeList(index, itens)} >remove</button>
           </div>
         ))}
       </ol>
       <div>
         <select name="log" id="log">
-          <option value="">Log de alterações</option>
+          <option value="">Log das alterações</option>
           {log && log.map((logs, index) => (
             <option key={index} value="log">{logs}</option>
           ))}
