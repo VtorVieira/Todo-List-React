@@ -3,7 +3,7 @@ import TodoContext from '../../context/TodoContext';
 import { MainDiv } from './Style';
 
 function AddList() {
-  const { setLog, setList, setSearch, list, search, log } = useContext(TodoContext);
+  const { setLog, setSearch, setList, search, list, log } = useContext(TodoContext);
   const current = new Date();
 
   const handleChange = ({ target }) => {
@@ -28,6 +28,9 @@ function AddList() {
     setSearch("");
   };
 
+  // id do ultimo item da lista
+  // somar + 1, para criar um id do novo item
+  // push, novo id e o nome do input
 
   return (
     <MainDiv>

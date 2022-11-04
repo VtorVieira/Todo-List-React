@@ -14,41 +14,45 @@ function DeleteList() {
   `;
 
   const removeList = (id, itemSelected) => {
-    if (checked.includes(id)) {
-      return setChecked(checked.filter((i) => i !== id));
+    if (checked.includes(itemSelected)) {
+      setChecked(checked.filter((i) => i !== itemSelected));
     }
-
     // identifica a posição do item dentro do array,
     // e retorna um novo array.
-    const removeItem = list.filter((_, index) => index !== id);
+    const removeItem = list.filter((iten, index) => iten !== itemSelected);
+    console.log(removeItem);
     // add no log o item removido
     setLog([...log, `Data: ${date} - Deletado item ${itemSelected}`]);
     // recupera lista atual, e atualiza a list
     setList(removeItem);
   };
 
-  const handleChange = (index) => {
-    if (checked.includes(index)) {
-      return setChecked(checked.filter((i) => i !== index));
-    } setChecked([...checked, index]);
+  const handleChange = (itens) => {
+    if (checked.includes(itens)) {
+      return setChecked(checked.filter((i) => i !== itens));
+    } setChecked([...checked, itens]);
   };
 
   return (
     <MainDiv>
+      <p>
+        {console.log(checked)}
+      </p>
       <ol>
         {list && list.map((itens, index) => (
           <div key={index} id='Mainlist'>
             <div
               id="currentList"
               style={{
-                textDecoration: checked.includes(index) ? 'line-through' : 'none'
+                textDecoration: checked.includes(itens) ? 'line-through' : 'none'
               }}
             >
               <input
                 type="checkbox"
                 name={`checkbox${index}`}
                 value={`checkbox${index}`}
-                onChange={() => handleChange(index)}
+                checked={checked.includes(itens)}
+                onChange={() => handleChange(itens)}
               />
               {itens}
             </div>
