@@ -19,8 +19,7 @@ function DeleteList() {
     }
     // identifica a posição do item dentro do array,
     // e retorna um novo array.
-    const removeItem = list.filter((iten, index) => iten !== itemSelected);
-    console.log(removeItem);
+    const removeItem = list.filter((_, index) => index !== id);
     // add no log o item removido
     setLog([...log, `Data: ${date} - Deletado item ${itemSelected}`]);
     // recupera lista atual, e atualiza a list
@@ -35,9 +34,6 @@ function DeleteList() {
 
   return (
     <MainDiv>
-      <p>
-        {console.log(checked)}
-      </p>
       <ol>
         {list && list.map((itens, index) => (
           <div key={index} id='Mainlist'>
